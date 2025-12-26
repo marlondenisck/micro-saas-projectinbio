@@ -6,11 +6,11 @@ export default function UserCard() {
   const icons = [Github, Instagram, Linkedin, X, Plus]
 
   return (
-    <div className='border-opacity-10 flex w-87 flex-col items-center gap-5 rounded-3xl border border-white bg-[#121212] p-5 text-white'>
+    <div className='border-opacity-10 border-border-primary flex w-87 flex-col items-center gap-5 rounded-3xl border bg-[#121212] p-5 text-white'>
       <div className='size-48'>
         <Image
-          src='http://github.com/marlondenisck.png'
-          alt='Marlon Denisck'
+          src='https://avatars.githubusercontent.com/u/15050029?v=4'
+          alt='Marlon Denis'
           width={192}
           height={192}
           className='h-full w-full rounded-full object-cover'
@@ -40,14 +40,13 @@ export default function UserCard() {
             </button>
           ))}
         </div>
-
-        <div className='flex h-43 w-full flex-col gap-3'>
-          <div className='flex w-full flex-col items-center gap-3'>
-            <Button className='w-full'>Compre Agora</Button>
-            <button className='rounded-xl bg-[#1E1E1E] p-3 hover:bg-[#2E2E2E]'>
-              <Plus />
-            </button>
-          </div>
+      </div>
+      <div className='flex h-43 w-full flex-col gap-3'>
+        <div className='flex w-full flex-col items-center gap-3'>
+          <Button className='w-full'>Compre Agora</Button>
+          <button className='rounded-xl bg-[#1E1E1E] p-3 hover:bg-[#2E2E2E]'>
+            <Plus />
+          </button>
         </div>
       </div>
     </div>
