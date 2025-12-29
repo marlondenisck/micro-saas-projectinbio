@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function ProjectCard() {
   return (
-    <div className='bg-background-secondary hover:border-border-secondary flex h-33 w-107.5 gap-5 rounded-[20px] border border-transparent p-3'>
+    <div className='bg-background-secondary hover:border-border-secondary flex h-33 w-85 gap-5 rounded-[20px] border border-transparent p-3'>
       <div className='size-24 shrink-0 overflow-hidden rounded-md'>
         <Image
           src='/project1.jpg'
