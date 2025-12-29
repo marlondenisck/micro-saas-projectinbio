@@ -2,6 +2,7 @@ import ProjectCard from '@/app/components/commons/project-card'
 import TotalVisits from '@/app/components/commons/total-visits'
 import UserCard from '@/app/components/commons/user-card'
 import { Plus } from 'lucide-react'
+import Link from 'next/link'
 
 export default async function ProfilePage({
   params,
@@ -15,9 +16,11 @@ export default async function ProfilePage({
     <div className='relative flex h-screen overflow-hidden p-20'>
       <div className='bg-background-tertiary fixed top-0 left-0 flex w-full items-center justify-center gap-1 py-2'>
         <span>Você está usando a versão trial.</span>
-        <button className='text-accent-green font-bold'>
-          Faça o upgrade agora!
-        </button>
+        <Link href={`/${profileId}/upgrade`}>
+          <button className='text-accent-green font-bold'>
+            Faça o upgrade agora!
+          </button>
+        </Link>
       </div>
       <div className='flex h-min w-1/2 justify-center'>
         <UserCard />
