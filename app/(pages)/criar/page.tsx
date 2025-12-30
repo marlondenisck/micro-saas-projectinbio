@@ -14,9 +14,6 @@ export default function CriarPage() {
           <Rocket className='size-10' />
         </div>
         <CreateLinkForm />
-        <div>
-          <span className='text-accent-pink'>Erro de exemplo</span>
-        </div>
       </div>
     </div>
   )

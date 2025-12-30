@@ -44,7 +44,7 @@ export default function CreateLinkForm() {
       <form onSubmit={handleSubmit} className='flex w-full items-center gap-2'>
         <span>projectinbio.com/</span>
         <TextInput value={link} onChange={handleLinkChange} />
-        <Button className='w-[126px]'>Criar</Button>
+        <Button className='w-31.5'>Criar</Button>
       </form>
       <div>
         <span className='text-accent-pink'>{error}</span>
