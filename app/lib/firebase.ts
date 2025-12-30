@@ -1,6 +1,6 @@
 import { cert, getApps, initializeApp } from 'firebase-admin/app'
 import { getFirestore } from 'firebase-admin/firestore'
-import { getStorage } from 'firebase-admin/storage'
+// Removido getStorage - agora usando Vercel Blob
 import 'server-only'
 
 // Certifcado
@@ -19,10 +19,11 @@ export const firebaseCert = cert({
 if (!getApps().length) {
   initializeApp({
     credential: firebaseCert,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    // Removido storageBucket - agora usando Vercel Blob
   })
 }
 
 export const db = getFirestore()
 
-export const storage = getStorage().bucket()
+// Comentado - agora usando Vercel Blob para storage
+// export const storage = getStorage().bucket()
