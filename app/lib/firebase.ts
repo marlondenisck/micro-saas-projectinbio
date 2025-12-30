@@ -25,5 +25,22 @@ if (!getApps().length) {
 
 export const db = getFirestore()
 
-// Comentado - agora usando Vercel Blob para storage
-// export const storage = getStorage().bucket()
+// Função para URLs locais (sem Google Storage)
+export async function getDownloadURLFromPath(path?: string) {
+  if (!path) return
+
+  // Se já é uma URL local completa, retorna ela mesma
+  if (path.startsWith('/uploads/')) {
+    return path
+  }
+
+  // Se é um path antigo do Firebase, converte para local
+  if (path.includes('project-images/')) {
+    // Extrai apenas o nome do arquivo
+    const fileName = path.split('/').pop()
+    return `/uploads/${fileName}`
+  }
+
+  // Fallback: assume que é um nome de arquivo
+  return `/uploads/${path}`
+}

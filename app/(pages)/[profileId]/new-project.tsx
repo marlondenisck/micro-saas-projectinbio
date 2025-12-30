@@ -40,34 +40,54 @@ export default function NewProject({ profileId }: { profileId: string }) {
 
   async function handleCreateProject() {
     setIsCreatingProject(true)
+    console.log('🚀 Iniciando criação do projeto...')
+
     const imagesInput = document.getElementById(
       'imageInput'
     ) as HTMLInputElement
 
-    if (!imagesInput.files?.length) return
-
-    const compressedFile = await compressFiles(Array.from(imagesInput.files))
-    console.log('COMPRESSED FILE', compressedFile)
-    const formData = new FormData()
-
-    formData.append('file', compressedFile[0])
-    formData.append('profileId', profileId)
-    formData.append('projectName', projectName)
-    formData.append('projectDescription', projectDescription)
-    formData.append('projectUrl', projectUrl)
-
-    await createProject(formData)
-
-    startTransition(() => {
-      setIsOpen(false)
+    if (!imagesInput.files?.length) {
+      console.log('❌ Nenhuma imagem selecionada')
       setIsCreatingProject(false)
-      setProjectName('')
-      setProjectDescription('')
-      setProjectUrl('')
-      setProjectImage(null)
+      return
+    }
 
-      router.refresh()
-    })
+    try {
+      const compressedFile = await compressFiles(Array.from(imagesInput.files))
+      console.log('📁 COMPRESSED FILE', compressedFile)
+
+      const formData = new FormData()
+
+      formData.append('file', compressedFile[0])
+      formData.append('profileId', profileId)
+      formData.append('projectName', projectName)
+      formData.append('projectDescription', projectDescription)
+      formData.append('projectUrl', projectUrl)
+
+      console.log('💾 Chamando createProject...')
+      const success = await createProject(formData)
+
+      if (success) {
+        console.log('✅ Projeto criado com sucesso!')
+        startTransition(() => {
+          setIsOpen(false)
+          setIsCreatingProject(false)
+          setProjectName('')
+          setProjectDescription('')
+          setProjectUrl('')
+          setProjectImage(null)
+          router.refresh()
+        })
+      } else {
+        console.log('❌ Erro ao criar projeto')
+        alert('Erro ao criar projeto. Tente novamente.')
+        setIsCreatingProject(false)
+      }
+    } catch (error) {
+      console.error('❌ Erro em handleCreateProject:', error)
+      alert('Erro ao criar projeto. Tente novamente.')
+      setIsCreatingProject(false)
+    }
   }
 
   return (
