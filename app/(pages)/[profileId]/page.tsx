@@ -43,7 +43,7 @@ export default async function ProfilePage({
         </Link>
       </div>
       <div className='flex h-min w-1/2 justify-center'>
-        <UserCard />
+        <UserCard profileData={profileData} />
       </div>
       <div className='flex w-full flex-wrap content-start justify-center gap-4 overflow-y-auto'>
         {projects.map(async (project) => {
